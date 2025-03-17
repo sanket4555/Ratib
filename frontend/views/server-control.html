@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ratib - Server Control</title>
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2>Ratib Admin</h2>
+            </div>
+            <ul class="nav-links">
+                <li data-page="dashboard">
+                    <a href="/admin/dashboard"><i class="fas fa-home"></i> Dashboard</a>
+                </li>
+                <li class="active" data-page="server-control">
+                    <a href="#"><i class="fas fa-server"></i> Server Control</a>
+                </li>
+                <li data-page="agencies">
+                    <a href="/admin/agencies"><i class="fas fa-newspaper"></i> News Agencies</a>
+                </li>
+                <li data-page="analytics">
+                    <a href="/admin/analytics"><i class="fas fa-chart-line"></i> Analytics</a>
+                </li>
+                <li id="logout">
+                    <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <h1>Server Control Panel</h1>
+            
+            <div class="server-controls">
+                <div class="server-status-card">
+                    <h3>Server Status</h3>
+                    <div class="status-indicator">
+                        <span id="status-dot" class="status-dot"></span>
+                        <span id="server-status">Running</span>
+                    </div>
+                    <button id="toggle-server" class="primary-btn">Stop Server</button>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <h3>Active Connections</h3>
+                        <p id="active-connections">0</p>
+                        <div class="chart-container">
+                            <canvas id="connectionsChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <h3>Memory Usage</h3>
+                        <p id="memory-usage">0 MB</p>
+                        <div class="chart-container">
+                            <canvas id="memoryChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <h3>CPU Usage</h3>
+                        <p id="cpu-usage">0%</p>
+                        <div class="chart-container">
+                            <canvas id="cpuChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <h3>Server Uptime</h3>
+                        <p id="server-uptime">0h 0m</p>
+                        <div class="uptime-progress">
+                            <div id="uptime-bar" class="progress-bar"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="server-logs">
+                    <h3>Server Logs</h3>
+                    <div class="log-container">
+                        <pre id="server-log-content"></pre>
+                    </div>
+                    <button id="clear-logs" class="secondary-btn">Clear Logs</button>
+                    <button id="download-logs" class="secondary-btn">Download Logs</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/js/server-control.js"></script>
+</body>
+</html> 

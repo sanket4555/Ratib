@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ratib - Analytics</title>
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2>Ratib Admin</h2>
+            </div>
+            <ul class="nav-links">
+                <li>
+                    <a href="/admin/dashboard"><i class="fas fa-home"></i> Dashboard</a>
+                </li>
+                <li>
+                    <a href="/admin/server-control"><i class="fas fa-server"></i> Server Control</a>
+                </li>
+                <li>
+                    <a href="/admin/agencies"><i class="fas fa-newspaper"></i> News Agencies</a>
+                </li>
+                <li class="active">
+                    <a href="/admin/analytics"><i class="fas fa-chart-line"></i> Analytics</a>
+                </li>
+                <li id="logout">
+                    <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <h1>Analytics Dashboard</h1>
+
+            <!-- Date Range Filter -->
+            <div class="date-filter">
+                <label for="start-date">From:</label>
+                <input type="date" id="start-date">
+                <label for="end-date">To:</label>
+                <input type="date" id="end-date">
+                <button id="apply-filter" class="primary-btn">Apply</button>
+            </div>
+
+            <!-- Analytics Grid -->
+            <div class="analytics-grid">
+                <!-- Revenue Analytics -->
+                <div class="analytics-card">
+                    <h3>Revenue Analysis</h3>
+                    <div class="chart-container">
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Subscription Trends -->
+                <div class="analytics-card">
+                    <h3>Subscription Trends</h3>
+                    <div class="chart-container">
+                        <canvas id="subscriptionChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Popular Newspapers -->
+                <div class="analytics-card">
+                    <h3>Popular Newspapers</h3>
+                    <div class="chart-container">
+                        <canvas id="newspaperChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Customer Demographics -->
+                <div class="analytics-card">
+                    <h3>Customer Demographics</h3>
+                    <div class="chart-container">
+                        <canvas id="demographicsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detailed Stats -->
+            <div class="detailed-stats">
+                <h2>Detailed Statistics</h2>
+                <div class="stats-table-container">
+                    <table class="stats-table">
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>Current Period</th>
+                                <th>Previous Period</th>
+                                <th>Change</th>
+                            </tr>
+                        </thead>
+                        <tbody id="detailed-stats-body">
+                            <!-- Will be populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/js/analytics.js"></script>
+</body>
+</html> 

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ratib - Agency Management</title>
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Updated Sidebar with Links -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2>Ratib Admin</h2>
+            </div>
+            <ul class="nav-links">
+                <li>
+                    <a href="/admin/dashboard"><i class="fas fa-home"></i> Dashboard</a>
+                </li>
+                <li>
+                    <a href="/admin/server-control"><i class="fas fa-server"></i> Server Control</a>
+                </li>
+                <li class="active">
+                    <a href="/admin/agencies"><i class="fas fa-newspaper"></i> News Agencies</a>
+                </li>
+                <li>
+                    <a href="/admin/analytics"><i class="fas fa-chart-line"></i> Analytics</a>
+                </li>
+                <li id="logout">
+                    <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <h1>Agency Management</h1>
+            
+            <!-- Search and Filter -->
+            <div class="search-filter">
+                <input type="text" id="agency-search" placeholder="Search agencies...">
+                <select id="status-filter">
+                    <option value="all">All Status</option>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                    <option value="suspended">Suspended</option>
+                </select>
+                <button id="add-agency-btn" class="primary-btn">Add New Agency</button>
+            </div>
+
+            <!-- Agencies Table -->
+            <div class="table-container">
+                <table class="agencies-table">
+                    <thead>
+                        <tr>
+                            <th>Agency Name</th>
+                            <th>Owner</th>
+                            <th>Contact</th>
+                            <th>Newspapers</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="agencies-list">
+                        <!-- Agencies will be loaded here dynamically -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Edit Agency Modal -->
+            <div id="edit-agency-modal" class="modal">
+                <div class="modal-content">
+                    <h2>Edit Agency</h2>
+                    <form id="edit-agency-form">
+                        <input type="hidden" id="edit-agency-id">
+                        <div class="form-group">
+                            <label for="edit-agency-name">Agency Name</label>
+                            <input type="text" id="edit-agency-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-agency-email">Email</label>
+                            <input type="email" id="edit-agency-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-agency-contact">Contact Number</label>
+                            <input type="tel" id="edit-agency-contact" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-agency-owner">Owner Name</label>
+                            <input type="text" id="edit-agency-owner" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-newspaper-names">Newspaper Names</label>
+                            <textarea id="edit-newspaper-names" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-agency-status">Status</label>
+                            <select id="edit-agency-status" required>
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
+                                <option value="suspended">Suspended</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="submit-btn">Update Agency</button>
+                        <button type="button" class="cancel-btn" onclick="closeEditModal()">Cancel</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Add Agency Modal -->
+            <div id="agency-modal" class="modal">
+                <div class="modal-content">
+                    <h2>Add New Agency</h2>
+                    <form id="add-agency-form">
+                        <div class="form-group">
+                            <label for="agency-name">Agency Name</label>
+                            <input type="text" id="agency-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="agency-email">Email</label>
+                            <input type="email" id="agency-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="agency-contact">Contact Number</label>
+                            <input type="tel" id="agency-contact" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="agency-owner">Owner Name</label>
+                            <input type="text" id="agency-owner" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newspaper-names">Newspaper Names</label>
+                            <textarea id="newspaper-names" placeholder="Enter newspaper names (one per line)" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Add Agency</button>
+                        <button type="button" class="cancel-btn" onclick="closeModal()">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/js/agency-management.js"></script>
+</body>
+</html> 

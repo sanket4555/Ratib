@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ratib - Customer Signup</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <form id="signup-form" class="signup-form">
+            <h1>Create your Ratib account</h1>
+            <p class="form-description">Enter your details to register for newspaper delivery</p>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="captcha">Captcha</label>
+                <div class="captcha-container">
+                    <div class="captcha-text">AB12CD</div>
+                    <input type="text" id="captcha" name="captcha" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Full Address</label>
+                <textarea id="address" name="address" required></textarea>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="mobile-number">Mobile Number</label>
+                    <input type="tel" id="mobile-number" name="mobile-number" required>
+                </div>
+                <div class="form-group">
+                    <label for="agency-code">Newspaper Agency Code</label>
+                    <input type="text" id="agency-code" name="agency-code" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>News Interests</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="interests" value="sports"> Sports</label>
+                    <label><input type="checkbox" name="interests" value="politics"> Politics</label>
+                    <label><input type="checkbox" name="interests" value="technology"> Technology</label>
+                    <label><input type="checkbox" name="interests" value="entertainment"> Entertainment</label>
+                    <label><input type="checkbox" name="interests" value="business"> Business</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="family-size">Number of people in the family (optional)</label>
+                <input type="number" id="family-size" name="family-size" min="0">
+            </div>
+
+            <div class="form-group">
+                <label for="family-members">Family Members Information (optional)</label>
+                <textarea id="family-members" name="family-members" 
+                    placeholder="e.g. Spouse: 35, Graduate; Child: 10, Student"></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Sign up</button>
+
+            <p class="login-link">Already have an account? <a href="/login">Sign in</a></p>
+        </form>
+    </div>
+    <script src="/js/register.js"></script>
+</body>
+</html> 

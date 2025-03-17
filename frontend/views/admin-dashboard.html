@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ratib - Admin Dashboard</title>
+    <link rel="stylesheet" href="/css/admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Updated Sidebar with Links -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2>Ratib Admin</h2>
+            </div>
+            <ul class="nav-links">
+                <li class="active">
+                    <a href="/admin/dashboard"><i class="fas fa-home"></i> Dashboard</a>
+                </li>
+                <li>
+                    <a href="/admin/server-control"><i class="fas fa-server"></i> Server Control</a>
+                </li>
+                <li>
+                    <a href="/admin/agencies"><i class="fas fa-newspaper"></i> News Agencies</a>
+                </li>
+                <li>
+                    <a href="/admin/analytics"><i class="fas fa-chart-line"></i> Analytics</a>
+                </li>
+                <li id="logout">
+                    <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Section -->
+            <section id="dashboard-section" class="active-section">
+                <h1>Dashboard Overview</h1>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Total Customers</h3>
+                        <p id="total-customers">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Active Agencies</h3>
+                        <p id="active-agencies">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Revenue</h3>
+                        <p id="total-revenue">₹0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Active Subscriptions</h3>
+                        <p id="active-subscriptions">0</p>
+                    </div>
+                </div>
+
+                <div class="charts-grid">
+                    <div class="chart-container">
+                        <h3>Customer Growth</h3>
+                        <canvas id="customerGrowthChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Revenue Distribution</h3>
+                        <div id="revenueChart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>News Interests Distribution</h3>
+                        <canvas id="interestsChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Agency Performance</h3>
+                        <div id="agencyPerformanceChart"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Server Control Section -->
+            <section id="server-control-section" class="section">
+                <h1>Server Control Panel</h1>
+                <div class="server-status-card">
+                    <h3>Server Status</h3>
+                    <p id="server-status">Running</p>
+                    <button id="toggle-server" class="primary-btn">Stop Server</button>
+                </div>
+                <div class="server-metrics">
+                    <div class="metric-card">
+                        <h3>Active Connections</h3>
+                        <p id="active-connections">0</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Server Uptime</h3>
+                        <p id="server-uptime">0h 0m</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- News Agencies Section -->
+            <section id="agencies-section" class="section">
+                <h1>News Agencies Management</h1>
+                <button id="add-agency-btn" class="primary-btn">Add New Agency</button>
+                
+                <div class="agencies-grid">
+                    <!-- Agencies will be loaded here dynamically -->
+                </div>
+
+                <!-- Add Agency Modal -->
+                <div id="agency-modal" class="modal">
+                    <div class="modal-content">
+                        <h2>Add New Agency</h2>
+                        <form id="agency-form">
+                            <div class="form-group">
+                                <label for="agency-name">Agency Name</label>
+                                <input type="text" id="agency-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="agency-email">Email</label>
+                                <input type="email" id="agency-email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="agency-contact">Contact Number</label>
+                                <input type="tel" id="agency-contact" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="agency-owner">Owner Name</label>
+                                <input type="text" id="agency-owner" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="newspaper-count">Number of Newspapers</label>
+                                <input type="number" id="newspaper-count" min="1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="newspaper-names">Newspaper Names</label>
+                                <textarea id="newspaper-names" placeholder="Enter newspaper names (one per line)" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">Add Agency</button>
+                            <button type="button" class="cancel-btn" onclick="closeModal()">Cancel</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Analytics Section -->
+            <section id="analytics-section" class="section">
+                <h1>Detailed Analytics</h1>
+                <div class="analytics-grid">
+                    <div class="chart-container">
+                        <h3>Customer Engagement</h3>
+                        <canvas id="engagementChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Subscription Trends</h3>
+                        <canvas id="subscriptionTrendsChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Popular Newspapers</h3>
+                        <canvas id="popularNewspapersChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Customer Demographics</h3>
+                        <canvas id="demographicsChart"></canvas>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="/js/admin-dashboard.js"></script>
+</body>
+</html> 
